@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Orders",
+  "description": "Schema validation for order pilotes recipe",
+  "type": "object",
+  "properties": {
+    "clientDto" : {
+      "type": "object",
+      "properties": {
+        "name" : {
+          "description": "The client name",
+          "type": "string"
+        },
+        "surname" : {
+          "description": "The client surname",
+          "type" : "string"
+        },
+        "address" : {
+          "description": "The client address for invoice",
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string",
+          "pattern": ".*@.+.*"
+        },
+        "city" : {
+          "description" : "The client address city invoice",
+          "type" : "string"
+        },
+        "phoneNumber" : {
+          "description": "The client phone number",
+          "type" : "string"
+        }
+      },
+      "required" : [ "name", "surname", "email"]
+    },
+    "orderDto" : {
+      "type": "object",
+      "properties": {
+        "pilotes" : {
+          "enum": ["5", "10", "15"]
+        }
+      },
+      "required": ["pilotes"]
+    },
+    "orderAddressDto" : {
+      "type": "object",
+      "properties": {
+        "street" : {
+          "type": "string",
+          "description": "the delivery address of the order"
+        },
+        "postcode" : {
+          "type": "string"
+        },
+        "city" : {
+          "type" : "string"
+        },
+        "country" : {
+          "type" : "string"
+        }
+      },
+      "required": [
+        "street",
+        "postcode",
+        "city",
+        "country"
+      ]
+    }
+  }
+}
